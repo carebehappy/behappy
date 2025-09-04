@@ -1,0 +1,449 @@
+/*  src/styles/components.css  */
+@layer components {
+
+/* Кнопки */
+.btn {
+ @apply px-6 py-3 rounded-lg font-semibold transition-colors duration-100;
+}
+
+.btn-primary {
+ @apply bg-primary text-white border-2 border-primary-light hover:bg-primary-light;
+}
+
+.btn-secondary {
+ @apply bg-transparent border-2 border-accent-light text-neutral-dark hover:border-accent hover:text-accent;
+}
+
+.btn-icon {
+ @apply flex items-center justify-center;
+}
+
+.btn-icon svg,
+.btn-icon img {
+ @apply transition-transform duration-300;
+ margin-right: 0.5rem;
+}
+
+.btn-primary svg,
+.btn-primary img {
+ @apply text-primary;
+}
+
+.btn-secondary svg,
+.btn-secondary img {
+ @apply text-accent-light;
+}
+
+.btn-secondary:hover svg,
+.btn-secondary:hover img {
+ @apply text-accent transform translate-x-1;
+}
+
+.btn-primary:hover svg,
+.btn-primary:hover img {
+ @apply transform translate-x-1;
+}
+
+/* Объединенные кнопки каруселей */
+.carousel-nav-button,
+.reviews-nav-button {
+  @apply bg-primary text-white rounded-full w-10 h-10 flex items-center justify-center;
+  @apply focus:outline-none transition-colors hover:bg-primary-light;
+  z-index: 10;
+}
+
+/* Кнопка звонка */
+.call-button {
+  @apply flex items-center justify-center py-2 px-4 border-2 border-primary 
+         text-white transition-colors duration-300 rounded;
+  max-width: 220px;
+}
+
+.call-button:hover {
+  @apply bg-primary bg-opacity-20;
+}
+
+.call-button svg {
+  @apply mr-2;
+  width: 20px;
+  height: 20px;
+}
+
+/* Карусели */
+.carousel-container {
+  @apply w-full relative;
+  margin: 0 -1rem;
+  padding: 0 1rem;
+}
+
+.carousel {
+  @apply flex items-center;
+  overflow-x: auto;
+  scroll-snap-type: x mandatory;
+  -webkit-overflow-scrolling: touch;
+  scrollbar-width: none;
+  -ms-overflow-style: none;
+  padding: 1rem 0;
+}
+
+.carousel::-webkit-scrollbar {
+  display: none;
+}
+
+.certificate-image {
+  @apply flex-shrink-0 rounded-lg shadow-md;
+  width: 250px;
+  height: auto;
+  max-height: 350px;
+  object-fit: contain;
+  scroll-snap-align: start;
+  transition: none;
+}
+
+.certificate-image:hover {
+  @apply shadow-md;
+  transform: none;
+}
+
+/* Карусель отзывов */
+.reviews-carousel .review-item {
+  @apply flex-shrink-0 rounded-lg shadow-md;
+  scroll-snap-align: start;
+  min-height: 150px;
+  display: flex;
+  flex-direction: column;
+}
+
+.reviews-carousel .review-item p.item.italic {
+  flex-grow: 1;
+}
+
+/* Scroll карусель */
+.scroll-carousel-container {
+  @apply w-full overflow-hidden;
+  height: 400px;
+  position: relative;
+}
+
+.scroll-carousel-track {
+  @apply flex;
+  gap: 20px;
+  will-change: transform;
+  height: 100%;
+}
+
+.carousel-item {
+  @apply flex-shrink-0 rounded-lg overflow-hidden shadow-lg;
+  width: 300px;
+  height: 350px;
+  position: relative;
+}
+
+.carousel-item img {
+  @apply w-full h-full object-cover transition-transform duration-300;
+}
+
+.carousel-item:hover img {
+  @apply scale-105;
+}
+
+.scroll-carousel-container::before,
+.scroll-carousel-container::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  width: 100px;
+  z-index: 2;
+  pointer-events: none;
+}
+
+.scroll-carousel-container::before {
+  left: 0;
+  background: linear-gradient(to right, white, transparent);
+}
+
+.scroll-carousel-container::after {
+  right: 0;
+  background: linear-gradient(to left, white, transparent);
+}
+
+/* Модальное окно */
+.modal-content {
+  max-height: 90vh;
+  overflow-y: auto;
+}
+
+/* Back to top кнопка */
+#back-to-top {
+  @apply opacity-0 transition-opacity duration-300;
+}
+
+#back-to-top.visible {
+  @apply opacity-100;
+}
+
+#back-to-top:hover {
+  @apply bg-opacity-100;
+}
+
+/* Списки */
+.list-item-icon {
+  @apply relative pl-6 text-neutral-dark;
+}
+
+.list-item-icon::before {
+  content: '•';
+  @apply absolute left-0 top-1 text-primary;
+}
+
+.list-none.space-y-2.divide-y.divide-neutral-light > li {
+  @apply pb-2 pt-2 first:pt-0 last:pb-0;
+}
+
+/* Нумерованные списки */
+.list-numbered-item {
+  @apply relative p-4 bg-white rounded-lg border border-neutral-light 
+         flex items-center h-full text-neutral-dark 
+         shadow-sm hover:shadow-md transition-shadow duration-300;
+}
+
+.list-numbered-item::before {
+  content: counter(list-item, decimal-leading-zero);
+  @apply absolute top-4 left-4 text-primary text-4xl font-bold opacity-20 
+         leading-none;
+}
+
+.list-numbered-item > span {
+  @apply pl-16;
+}
+
+ol {
+  @apply grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-4 list-none 
+         space-y-0;
+  counter-reset: list-item;
+}
+
+ol li {
+  counter-increment: list-item;
+  @apply h-full;
+}
+
+/* Карточки */
+.card-content {
+  @apply flex flex-col h-full;
+}
+
+.card-footer {
+  @apply mt-auto pt-4;
+}
+
+/* Stepper */
+.stepper-item {
+    @apply cursor-pointer transition-all duration-300 ease-in-out border border-neutral-light rounded-lg;
+}
+
+.stepper-item:hover {
+    @apply bg-neutral-light bg-opacity-50;
+}
+
+.stepper-item.active {
+    @apply bg-primary-light bg-opacity-10 border-primary-light;
+    border-left: 4px solid;
+    border-left-color: theme('colors.primary.DEFAULT');
+}
+
+.stepper-dot {
+    @apply transition-all duration-300 ease-in-out bg-neutral border-2 border-white shadow-md;
+}
+
+.stepper-item.active .stepper-dot {
+    @apply bg-primary transform scale-110;
+}
+
+.stepper-item.active .stepper-dot::after {
+    content: '';
+    @apply absolute top-1/2 left-1/2 w-2 h-2 bg-white rounded-full;
+    transform: translate(-50%, -50%);
+}
+
+.stepper-item.completed .stepper-dot {
+    @apply bg-accent;
+}
+
+.stepper-item.completed .stepper-dot::after {
+    content: '✓';
+    @apply absolute top-1/2 left-1/2 text-white text-xs font-bold;
+    transform: translate(-50%, -50%);
+}
+
+.stepper-line {
+    @apply transition-all duration-500 ease-in-out bg-neutral;
+}
+
+#progress-line {
+    @apply bg-primary transition-all duration-500 ease-in-out;
+}
+
+.expand-icon {
+    @apply transition-transform duration-300 ease-in-out text-neutral;
+}
+
+.stepper-item.active .expand-icon {
+    @apply transform rotate-90 text-primary;
+}
+
+.stepper-content {
+    @apply max-h-0 overflow-hidden transition-all duration-300 ease-in-out;
+}
+
+/*cta*/
+.cta-content {
+    text-align: center;
+    color: white;
+    max-width: 600px;
+    margin: 0 auto;
+    position: relative;
+    z-index: 2;
+    padding: 4rem 2rem;
+}
+
+.cta-title {
+    font-size: clamp(2rem, 5vw, 3.5rem);
+    font-weight: 800;
+    margin-bottom: 1.5rem;
+    line-height: 1.1;
+    opacity: 0;
+    transform: translateY(30px);
+}
+
+.cta-subtitle {
+    font-size: clamp(1.1rem, 2.5vw, 1.3rem);
+    margin-bottom: 2.5rem;
+    opacity: 0.9;
+    opacity: 0;
+    transform: translateY(30px);
+}
+
+.cta-button {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.75rem;
+    background: white;
+    color: #2d91fc;
+    padding: 1rem 2.5rem;
+    border-radius: 50px;
+    font-weight: 700;
+    font-size: 1.1rem;
+    text-decoration: none;
+    transition: all 0.3s ease;
+    box-shadow: 0 8px 25px rgba(0,0,0,0.2);
+    opacity: 0;
+    transform: translateY(30px);
+    border: none;
+    cursor: pointer;
+}
+
+.cta-button:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 12px 35px rgba(0,0,0,0.25);
+    color: #1e3a8a;
+}
+
+.telegram-icon {
+    width: 24px;
+    height: 24px;
+    background: #2d91fc;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: white;
+    font-size: 14px;
+}
+
+.cta-bg-pattern {
+    position: absolute;
+    inset: 0;
+    opacity: 0.1;
+    background-image: radial-gradient(circle at 25% 25%, white 2px, transparent 2px),
+                      radial-gradient(circle at 75% 75%, white 2px, transparent 2px);
+    background-size: 100px 100px;
+}
+
+/* 3D Карусель - добавить в src/styles/components.css */
+/* 3D Carousel Styles - в src/styles/components.css */
+
+/* 3D Carousel Container */
+.carousel-3d-container {
+  @apply w-full;
+  display: block; /* Показываем сразу для статичной секции */
+}
+
+/* 3D Carousel Styles */
+.carousel-3d-stage {
+  @apply relative w-full overflow-hidden;
+  height: 60vh;
+  min-height: 500px;
+  perspective: 1200px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.carousel-3d-ring {
+  @apply absolute;
+  inset: 0;
+  transform-style: preserve-3d;
+  will-change: transform;
+}
+
+.carousel-3d-panel {
+  @apply absolute rounded-xl overflow-hidden shadow-2xl;
+  inset: 0;
+  width: 600px;
+  height: 400px;
+  margin: auto;
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: 50% 50%;
+  backface-visibility: hidden;
+  box-shadow: 
+    0 12px 40px rgba(0,0,0,.45),
+    0 0 1px rgba(255,255,255,.03) inset;
+}
+
+.carousel-3d-panel::after {
+  content: "";
+  @apply absolute inset-0 pointer-events-none;
+  background: radial-gradient(60% 60% at 50% 50%, rgba(255,255,255,.06), rgba(0,0,0,0));
+}
+
+.carousel-3d-hud {
+  @apply absolute text-center text-gray-600 opacity-90 pointer-events-none select-none whitespace-nowrap;
+  bottom: -2.75rem;
+  left: 50%;
+  transform: translateX(-50%);
+  font-size: 0.9rem;
+}
+
+/* Mobile adaptations */
+@media (max-width: 720px) {
+  .carousel-3d-stage {
+    height: 50vh;
+    min-height: 400px;
+  }
+  
+  .carousel-3d-panel {
+    width: 450px;
+    height: 320px;
+  }
+  
+  .carousel-3d-hud {
+    bottom: -2.2rem;
+    font-size: 0.85rem;
+    padding: 0 1rem;
+  }
+}
+
+}

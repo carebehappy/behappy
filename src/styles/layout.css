@@ -1,0 +1,203 @@
+@layer components {
+
+/* Контейнеры и секции */
+.section-fullwidth {
+    position: relative;
+    width: 100vw;
+    left: 50%;
+    right: 50%;
+    margin-left: -50vw;
+    margin-right: -50vw;
+}
+
+.container {
+    @apply max-w-[1200px] mx-auto px-4;
+}
+
+.section-block {
+  @apply animate-base rounded-lg shadow-md my-12 bg-gradient-to-b from-white to-neutral-light;
+}
+
+/* Заголовки */
+.heading-xl {
+  @apply text-3xl md:text-5xl font-bold;
+}
+
+.heading-lg {
+  @apply text-2xl font-bold mb-4;
+}
+
+/* Header */
+.fixed-header {
+  @apply fixed top-0 left-0 right-0 z-50 h-[10vh] bg-white bg-opacity-90 
+         backdrop-blur border-b border-neutral border-opacity-20 transition-transform duration-500;
+}
+
+.fixed-header.-translate-y-full {
+  transform: translateY(-100%);
+}
+
+/* Мобильное меню */
+#mobile-menu {
+  @apply fixed top-[10vh] right-0 w-[60%] h-screen bg-white bg-opacity-95 
+         translate-x-full transition-transform duration-300 z-50 overflow-y-auto;
+}
+
+#mobile-menu.open {
+  @apply translate-x-0;
+}
+
+#mobile-menu a {
+  @apply opacity-0 translate-x-5 transition-all duration-300 ease-in-out;
+}
+
+#mobile-menu.open a {
+  @apply opacity-100 translate-x-0;
+}
+
+#mobile-menu.open a:nth-child(1) { transition-delay: 0.1s; }
+#mobile-menu.open a:nth-child(2) { transition-delay: 0.2s; }
+#mobile-menu.open a:nth-child(3) { transition-delay: 0.3s; }
+#mobile-menu.open a:nth-child(4) { transition-delay: 0.4s; }
+#mobile-menu.open a:nth-child(5) { transition-delay: 0.5s; }
+
+/* Hero секция */
+.hero {
+  position: relative;
+}
+
+.hero-image {
+  background-image: url('../images/hero-desktop.webp');
+  background-position: left center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  position: relative;
+  mask: linear-gradient(90deg, transparent 0%, black 30%, black 100%);
+  -webkit-mask: linear-gradient(90deg, transparent 0%, black 30%, black 100%);
+}
+
+/* Видео */
+.aspect-w-16 {
+  position: relative;
+  padding-bottom: calc(var(--tw-aspect-h) / var(--tw-aspect-w) * 100%);
+  --tw-aspect-w: 16;
+}
+
+.aspect-h-9 {
+  --tw-aspect-h: 9;
+}
+
+.aspect-w-16 > * {
+  position: absolute;
+  height: 100%;
+  width: 100%;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+}
+
+/* Интерактивный блок резиденции */
+.elite-residence-block {
+  @apply max-w-6xl mx-auto;
+}
+
+.residence-features {
+  @apply bg-white;
+}
+
+.residence-features h3 {
+  @apply text-2xl font-bold text-gray-800 mb-6;
+}
+
+.features-list {
+  @apply list-none space-y-3;
+}
+
+.feature-item {
+  @apply relative pl-8 py-3 text-base text-gray-700 cursor-pointer 
+         transition-all duration-300 border-l-2 border-transparent hover:bg-gray-50;
+}
+
+.feature-marker {
+  @apply absolute left-3 top-1/2 w-2 h-2 bg-gray-400 rounded-full 
+         transform -translate-y-1/2 transition-all duration-300;
+}
+
+.feature-item.active {
+  @apply border-l-blue-600 bg-blue-50 text-blue-800 font-medium;
+}
+
+.feature-item.active .feature-marker {
+  @apply bg-blue-600 scale-125;
+}
+
+.feature-btn {
+  @apply px-4 py-2 rounded-full border-2 border-gray-300 text-sm font-medium
+         transition-all duration-300 whitespace-nowrap bg-white min-w-max;
+}
+
+.feature-btn.active {
+  @apply bg-blue-600 text-white border-blue-600;
+}
+
+.residence-image {
+  @apply shadow-xl;
+}
+
+.residence-image img {
+  @apply w-full h-96 lg:h-[500px] object-cover transition-all duration-500;
+}
+
+.residence-image img.fade-out {
+  @apply opacity-0;
+}
+
+  /* cta-scaling-section */ /* Изначально на всю ширину */
+/*  .cta-scaling-section {
+      position: relative;
+      z-index: 10;
+      transform-origin: center center;
+      overflow: hidden;
+      background: linear-gradient(135deg, #2d91fc 0%, #1e3a8a 100%);
+      transition: all 0.1s ease-out;
+      width: 100vw; 
+  }*/
+
+.cta-scaling-section {
+    position: relative;
+    z-index: 10;
+    transform-origin: center center;
+    overflow: hidden;
+    background: linear-gradient(135deg, #2d91fc 0%, #1e3a8a 100%);
+}
+/* Footer */
+.footer-column {
+  @apply flex flex-col;
+}
+
+.footer-column h3 {
+  @apply text-xl font-bold mb-4;
+}
+
+.footer-column a {
+  @apply mb-2 text-neutral hover:text-neutral-light;
+}
+
+.footer-divider {
+  @apply w-full h-px bg-white bg-opacity-10 my-4;
+}
+
+.location-block {
+  @apply flex items-center justify-center mt-2.5;
+}
+
+.location-block .flag {
+  @apply ml-1.5;
+}
+
+.footer-container {
+  @apply container mx-auto px-8 md:px-6 lg:px-8 grid grid-cols-1 gap-8 md:grid-cols-2 lg:grid-cols-3;
+}
+
+}

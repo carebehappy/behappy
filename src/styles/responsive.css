@@ -1,0 +1,52 @@
+/* Мобильные стили */
+@media (max-width: 768px) {
+  .scroll-carousel-container {
+    height: 300px;
+  }
+  
+  .carousel-item {
+    width: 250px;
+    height: 280px;
+  }
+  
+  .scroll-carousel-container::before,
+  .scroll-carousel-container::after {
+    width: 50px;
+  }
+}
+
+@media screen and (max-width: 1023px) {
+  .hero-image {
+    background-image: url('../images/hero-mobile.webp');
+    background-position: 70% center;
+    background-size: contain;
+    position: absolute;
+    height: 100%;
+    width: 100%;
+    top: 0;
+    bottom: 0;
+    transform: translateY(40%);
+    mask: linear-gradient(135deg, transparent 0%, transparent 15%, rgba(0,0,0,0.2) 35%, rgba(0,0,0,0.6) 55%, black 75%);
+    -webkit-mask: linear-gradient(135deg, transparent 0%, transparent 15%, rgba(0,0,0,0.2) 35%, rgba(0,0,0,0.6) 55%, black 75%);
+  }
+}
+
+/*Это для скролл-скейлинг эффекта*/
+@media (max-width: 768px) {
+    .cta-content {
+        padding: 3rem 1rem;
+    }
+    
+    .cta-title {
+        font-size: 2rem;
+    }
+    
+    .cta-button {
+        padding: 0.875rem 2rem;
+        font-size: 1rem;
+    }
+}
+
+
+
+
